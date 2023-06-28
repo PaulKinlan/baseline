@@ -53,12 +53,12 @@ export default function render({ bcd, features, browsers, browserList, selectedB
   </head>
   <body>
     <header>
-      <h1>Now Stable</h1>
+      <h1>Baseline [year]</h1>
     </header>
     ${renderNavigation()}
-    <p>"New on the Web": For a given set of browsers, what APIs became stable and when, ordered reverse chronologically.</p>
+    <p>What's new to the web in grouped by year</p>
     <p>It's a great source of information for posts like <a href="https://web.dev/tags/new-to-the-web/">this</a></p>
-    <form method=GET action="/when-stable">
+    <form method=GET action="/">
       ${renderWarnings(warnings)}
       ${renderBrowsers(browsers, selectedBrowsers)}
       ${renderFeatures(featureConfig, selectedFeatures)}
