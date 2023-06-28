@@ -22,7 +22,7 @@ function renderFeaturesQuery(features: FeatureConfig, selectedFeatures: Set<stri
 }
 
 export default function render({ bcd, features, browsers, browserList, selectedBrowsers, selectedFeatures, helper, featureConfig, warnings }: WhenRender): Response {
-  let currentMonth = "";
+  let currentYear = "";
 
   const { __meta } = bcd
 
@@ -73,9 +73,8 @@ export default function render({ bcd, features, browsers, browserList, selectedB
       ? features.map((feature) => {
         let response;
         let heading;
-        const date = feature.stableStats.last.added.getFullYear() + "/" +
-          (feature.stableStats.last.added.getUTCMonth() + 1);
-        if (currentMonth != date) {
+        const date = (feature.stableStats.last.added.getFullYear() + 1).toString();
+        if (currentYear != date) {
           heading = template`
           ${(date == "") ? "" : "</tbody></table>"}
           <h4>${date}</h4>
@@ -102,7 +101,7 @@ export default function render({ bcd, features, browsers, browserList, selectedB
         <td>${helper.getBrowserName(feature.stableStats.last.browser)
           }</td><td>${feature.stableStats.last.added.toLocaleDateString()}</td><td>${feature.stableStats.ageInDays}</td></tr>`;
 
-        currentMonth = date;
+        currentYear = date;
 
         return response;
       })
