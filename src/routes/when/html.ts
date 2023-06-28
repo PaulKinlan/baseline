@@ -28,16 +28,16 @@ export default function render({ bcd, features, browsers, browserList, selectedB
 
   return template`<html>
   <head>
-	<title>Now Stable ${(browserList != "") ? `across ${browserList}` : ""
-    }</title>
+	<title>Stable on the web ${(browserList != "") ? `across ${browserList}` : ""
+    } by year.</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 	<meta name="author" content="Paul Kinlan">
-  <meta name="description" content="A list of features that are considered stable for ${browserList}">
+  <meta name="description" content="A list of features that are considered stable for ${browserList} per year">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta charset="UTF-8">
 	<link rel="author" href="https://paul.kinlan.me/">
   <link rel="shortcut icon" href="/images/favicon.png">
-  <link rel="alternate" type=”application/rss+xml” href="/when-stable?${renderBrowsersQuery(browsers, selectedBrowsers)}&${renderFeaturesQuery(featureConfig, selectedFeatures)}&type=rss">
+  <link rel="alternate" type=”application/rss+xml” href="/?${renderBrowsersQuery(browsers, selectedBrowsers)}&${renderFeaturesQuery(featureConfig, selectedFeatures)}&type=rss">
   <style>
 
   table {

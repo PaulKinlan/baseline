@@ -3,8 +3,6 @@ import template from "../../flora.ts";
 
 export default function renderBrowsers(): ReadableStream<any> {
   return template`<nav>
-  <ol>
-      <li><a href="/">Time to Stable</a></li>
-  </ol>
+  <a href="/">Home</a>
 </nav>`;
 }
