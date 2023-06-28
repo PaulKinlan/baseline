@@ -73,7 +73,7 @@ export default function render({ bcd, features, browsers, browserList, selectedB
       ? features.map((feature) => {
         let response;
         let heading;
-        const date = (feature.stableStats.last.added.getFullYear() + 1).toString();
+        const date = feature.stableStats.last.added.getFullYear().toString();
         if (currentYear != date) {
           heading = template`
           ${(date == "") ? "" : "</tbody></table>"}
