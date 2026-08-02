@@ -1,9 +1,8 @@
-import { serve } from "https://deno.land/std@0.152.0/http/server.ts";
 import { join } from "https://deno.land/std@0.152.0/path/mod.ts";
 import { contentType } from "https://deno.land/std@0.152.0/media_types/mod.ts";
 
-// @deno-types="https://esm.sh/@mdn/browser-compat-data@latest/types.d.ts"
-import bcd from "https://esm.sh/@mdn/browser-compat-data@latest";
+// @deno-types="https://esm.sh/@mdn/browser-compat-data@5.6.35/types.d.ts"
+import bcd from "https://esm.sh/@mdn/browser-compat-data@5.6.35";
 
 import when from "./src/routes/when.ts";
 import type { Route } from "./types/types.d.ts";
@@ -45,7 +44,7 @@ class StaticFileHandler {
   }
 }
 
-serve((req: Request) => {
+Deno.serve((req: Request) => {
   const url = req.url;
   const staticFiles = new StaticFileHandler("static");
   let response: Response | Promise<Response> = new Response("Not found", { status: 404 });
@@ -75,3 +74,5 @@ serve((req: Request) => {
 
   return response;
 });
+
+// migrated to new Deno Deploy: Deno.serve + pinned esm.sh deps
